@@ -1,0 +1,301 @@
+[
+  {
+    "nodeId": "97:29398",
+    "slug": "enabled-read-false-false-default-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29410",
+    "slug": "hovered-read-false-false-default-letter-none",
+    "props": {
+      "State": "Hovered",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29423",
+    "slug": "focused-read-false-false-default-letter-none",
+    "props": {
+      "State": "Focused",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29437",
+    "slug": "pressed-read-false-false-default-letter-none",
+    "props": {
+      "State": "Pressed",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29450",
+    "slug": "enabled-unread-false-false-default-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Unread",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29462",
+    "slug": "enabled-read-true-false-default-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "True",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29474",
+    "slug": "enabled-unread-true-false-default-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Unread",
+      "Starred": "True",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29486",
+    "slug": "enabled-read-false-false-attachment-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Attachment",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29501",
+    "slug": "enabled-unread-false-false-attachment-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Unread",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Attachment",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29516",
+    "slug": "enabled-read-false-false-draft-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Draft",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29528",
+    "slug": "enabled-read-false-false-message-count-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Message count",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29541",
+    "slug": "enabled-read-false-false-label-chip-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Label chip",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29554",
+    "slug": "enabled-read-false-false-tracking-no-photo-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Tracking",
+      "Avatar": "No photo",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29567",
+    "slug": "enabled-read-false-false-important-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Important",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29580",
+    "slug": "enabled-read-false-false-snoozed-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Snoozed",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29592",
+    "slug": "enabled-read-false-false-scheduled-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Scheduled",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29604",
+    "slug": "enabled-read-false-false-long-text-letter-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Long text",
+      "Avatar": "Letter",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29616",
+    "slug": "enabled-read-false-false-default-logo-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Logo",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29628",
+    "slug": "enabled-read-false-false-default-no-photo-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "No photo",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29640",
+    "slug": "enabled-read-false-true-default-checked-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "True",
+      "Content": "Default",
+      "Avatar": "Checked",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29652",
+    "slug": "enabled-unread-false-true-default-checked-none",
+    "props": {
+      "State": "Enabled",
+      "Status": "Unread",
+      "Starred": "False",
+      "Selected": "True",
+      "Content": "Default",
+      "Avatar": "Checked",
+      "Swipe": "None"
+    }
+  },
+  {
+    "nodeId": "97:29664",
+    "slug": "enabled-read-false-false-default-letter-archive",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "Archive"
+    }
+  },
+  {
+    "nodeId": "97:29678",
+    "slug": "enabled-read-false-false-default-letter-delete",
+    "props": {
+      "State": "Enabled",
+      "Status": "Read",
+      "Starred": "False",
+      "Selected": "False",
+      "Content": "Default",
+      "Avatar": "Letter",
+      "Swipe": "Delete"
+    }
+  }
+]

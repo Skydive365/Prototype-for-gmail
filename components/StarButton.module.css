@@ -1,0 +1,83 @@
+.button {
+  position: relative;
+  flex: none;
+  width: var(--size-icon-button-md);
+  height: var(--size-icon-button-md);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--color-icon-primary);
+}
+
+.target {
+  position: absolute;
+  inset: calc((var(--size-icon-button-md) - var(--size-target-min)) / 2);
+}
+
+.stateLayer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.icon {
+  position: relative;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+
+.button[data-on-selected="true"] {
+  color: var(--color-icon-on-selected);
+}
+
+.button[data-starred="true"] {
+  color: var(--color-icon-starred);
+}
+
+/* States, mirroring the M3 Icon button inside the Figma atom */
+.button[data-state="hovered"] .stateLayer {
+  background: var(--color-state-hover-subtle);
+}
+
+.button[data-state="focused"] .stateLayer {
+  background: var(--color-state-pressed-subtle);
+}
+
+.button[data-state="pressed"] .stateLayer {
+  background: var(--color-state-hover-subtle);
+  border-radius: var(--radius-200);
+}
+
+.ripple {
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  width: 38px;
+  height: 28px;
+  fill: var(--color-state-pressed-subtle);
+}
+
+.button[data-starred="true"] .ripple {
+  fill: var(--color-icon-starred);
+}
+
+/* Real browser interaction when the Figma state is left at Enabled */
+.button[data-state="enabled"]:hover .stateLayer {
+  background: var(--color-state-hover-subtle);
+}
+
+.button[data-state="enabled"]:active .stateLayer {
+  background: var(--color-state-pressed-subtle);
+}
+
+.button:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}

@@ -1,0 +1,26 @@
+.timeStamp {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100);
+  height: var(--size-icon-md);
+  padding-right: var(--space-300);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+.icon {
+  flex: none;
+  color: var(--color-icon-tertiary);
+}
+
+.timeStamp[data-emphasized="true"] {
+  color: var(--color-text-primary);
+}
+
+.timeStamp[data-emphasized="true"] .icon {
+  color: var(--color-icon-primary);
+}
+
+.timeStamp[data-on-selected="true"] {
+  color: var(--color-text-on-selected);
+}

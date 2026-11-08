@@ -1,0 +1,7 @@
+.ring {
+  position: absolute;
+  inset: var(--border-width-focus);
+  border-radius: var(--radius-50);
+  box-shadow: 0 0 0 var(--border-width-focus) var(--color-border-focus);
+  pointer-events: none;
+}

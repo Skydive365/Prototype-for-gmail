@@ -1,0 +1,56 @@
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.default {
+  background: var(--color-avatar-default);
+  color: var(--color-avatar-on-default);
+}
+
+.green {
+  background: var(--color-avatar-green);
+}
+
+.orange {
+  background: var(--color-avatar-orange);
+}
+
+/* The letter sits inside the M3 kit avatar, which has no text style:
+   Roboto Medium 16/24, tracking 0.1, built from typography tokens. */
+.letter {
+  color: var(--color-avatar-on-color);
+  font-family: var(--font-family-plain);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-400);
+  line-height: var(--font-line-height-300);
+  letter-spacing: var(--font-tracking-tight);
+}
+
+.noPhoto {
+  background: var(--color-surface-container-high);
+  color: var(--color-icon-secondary);
+}
+
+.check {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 24.2085px;
+  height: 24.2085px;
+}
+
+.placeholder {
+  position: absolute;
+  left: 5.9082px;
+  top: 10px;
+  width: 28.1841px;
+  height: 25.6321px;
+}

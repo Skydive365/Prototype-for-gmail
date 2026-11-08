@@ -1,0 +1,24 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  height: 32px; /* M3 chip height, not tokenised in Figma */
+  padding: 6px var(--space-400) 6px var(--space-200);
+  /* Figma's stroke is "inside" and takes no layout space; an inset shadow does the same */
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--color-border-subtle);
+  border-radius: var(--radius-200);
+  flex: none;
+}
+
+.icon {
+  flex: none;
+  color: var(--color-icon-attachment);
+}
+
+.label {
+  max-width: 118px; /* label width in the Figma chip; longer names get an ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}

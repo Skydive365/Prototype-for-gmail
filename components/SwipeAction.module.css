@@ -1,0 +1,21 @@
+.action {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-600);
+}
+
+.action[data-action="archive"] {
+  justify-content: flex-start;
+  background: var(--color-action-archive);
+}
+
+.action[data-action="delete"] {
+  justify-content: flex-end;
+  background: var(--color-action-delete);
+}
+
+.icon {
+  color: var(--color-icon-on-action);
+}

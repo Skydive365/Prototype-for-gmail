@@ -1,0 +1,24 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.layer[data-state="hovered"],
+.layer[data-state="pressed"] {
+  background: var(--color-state-hover);
+}
+
+.layer[data-state="focused"] {
+  background: var(--color-state-pressed);
+}
+
+.ripple {
+  position: absolute;
+  left: 72.1px;
+  top: 37.4px;
+  width: 432.6px;
+  height: 59.4px;
+  fill: var(--color-state-hover);
+}
