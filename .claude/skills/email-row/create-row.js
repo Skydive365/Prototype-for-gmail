@@ -141,6 +141,12 @@ try {
   if (kit && t.avatarColor) {
     const bg = kit.findOne((n) => n.name === "Background");
     if (bg) setFill(bg, `color/avatar/${t.avatarColor}`);
+      // The violet (default) background needs the dark violet letter: white on it is ~1.3:1 contrast
+      const initial = kit.findOne((n) => n.type === "TEXT");
+      if (initial && t.avatarColor === "default") {
+        setFill(initial, "color/avatar/on-default");
+        report.overrides.push("Avatar letter → color/avatar/on-default (contrast)");
+      }
   }
   const setText = async (node, value) => {
     if (!node || value == null) return;

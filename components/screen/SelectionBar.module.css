@@ -1,0 +1,39 @@
+/* Same footprint as the search bar so nothing below moves */
+.outer {
+  flex: none;
+  padding: 0 var(--space-400);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 64px;
+  padding: var(--space-200) var(--space-100);
+  background: var(--color-surface-selected);
+  color: var(--color-icon-on-selected);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--size-target-min);
+  height: var(--size-target-min);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background: var(--color-state-hover-subtle);
+}
+
+.count {
+  flex: 1 1 0;
+  color: var(--color-text-on-selected);
+}

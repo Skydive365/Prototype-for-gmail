@@ -1,0 +1,18 @@
+.fab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-300);
+  height: 56px; /* M3 FAB height */
+  padding: 0 var(--space-400);
+  border: 0;
+  border-radius: var(--radius-400);
+  background: var(--color-avatar-default);
+  color: var(--color-avatar-on-default);
+  cursor: pointer;
+  /* M3 elevation level 3 (not tokenised in Figma) */
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3), 0 4px 8px 3px rgb(0 0 0 / 0.15);
+}
+
+.fab:hover {
+  background-image: linear-gradient(var(--color-state-hover-subtle), var(--color-state-hover-subtle));
+}

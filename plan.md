@@ -6,7 +6,7 @@ You have a Gmail mobile **Email row** component set and its atoms in Figma (`Lea
 
 Plan approved 2026-11-08. Phase 1 audit completed 2026-11-08 (read-only — nothing in Figma was changed). This file is the single checklist for the project.
 
-**Where we are:** Phases 1–4 complete (2026-11-08). Phase 2 report in **section 2.11**, Phase 3 in **section 3.1**, Phase 4 under its checklist. Phase 5 (multiple rows) is next, after you've tried the `/email-row` skill yourself.
+**Where we are:** All six phases built (2026-11-08). Phase 2 report in **section 2.11**, Phase 3 in **section 3.1**, Phases 4–6 under their checklists. Phase 5 slot placement and Phase 6 are awaiting your review; nothing since Phase 4 is committed.
 
 ---
 
@@ -566,11 +566,132 @@ Known gap: selection has **no keyboard equivalent** (long press only, by decisio
 - `create-row.js`: the script run in Figma. Looks everything up by name (property keys, tokens, text styles), so it survives id changes; removes any partial result on failure; never edits the master or detaches.
 - The skill becomes available as `/email-row` in a **new** Claude Code session in this project (skills load at session start).
 
-### Phase 5 — Multiple rows (after Phase 4 tested)
-- [ ] Batch input, section headers, Auto Layout list, same master.
+### Phase 5 — Multiple rows (completed 2026-11-08)
+- [x] Requirements agreed (table below)
+- [x] Skill written: `.claude/skills/email-list/` (`SKILL.md`, `create-list.js`; reuses `../email-row/reference.md`)
+- [x] Safety test: a list containing an impossible row (Hovered + Attachment) is refused before anything is created
+- [x] List test: "Monday morning", 6 rows + "Today" / "Yesterday" headers, all checks pass (see below)
+- [x] Fix found during the test: violet (default) letter avatars had a white letter (~1.3 : 1 contrast). Both skills now switch the letter to `color/avatar/on-default` and report it as an override
+- [x] Tested by you: working (2026-11-08)
+- [x] Slot placement added at your request (see "Slot placement" below); tested in **Examples/Reviews-Mobile**
+- [ ] **Your review** of the Reviews-Mobile screen with the list in its slot
 
-### Phase 6 — Full inbox (future)
-- [ ] Top app bar, search, groups, rows, bottom nav, states — Figma screen + browser prototype, same tokens.
+**Requirements (decided by you)**
+| # | Topic | Decision |
+|---|---|---|
+| 1 | Input | Plain-language brief, e.g. `/email-list 6 emails for a Monday morning, 2 unread, one starred from my manager` |
+| 2 | Content | Claude drafts realistic, fictional content; you review and edit the table; nothing goes to Figma unapproved |
+| 3 | Groups | Headers only when asked. Simple token-styled header (label/small, text/secondary, padding space/400 + space/200), reported as a proposed extension |
+| 4 | Container | Auto Layout frame "Email list / <name>": 412 px, vertical, 0 gap. Goes into a screen's slot or the Section (see "Slot placement") |
+| 5 | Skill shape | New `/email-list` skill reusing email-row's rules; `/email-row` unchanged (apart from the contrast fix) |
+| 6 | Size and checks | 1–20 rows; read back every row, check list Auto Layout and height, overlaps, one screenshot |
+
+**List test results**
+| Check | Result |
+|---|---|
+| Rows / headers | 6 rows, 2 headers, in the approved order |
+| Read-back (texts, unread, starred, avatar, letter) | matches the table for every row |
+| Linked to master | all 6 |
+| Sizes | 412 × 128 (attachment), 412 × 88 (others) |
+| List frame | vertical, gap 0, 412 wide, height 648 = sum of children |
+| Overlaps | none |
+| Proposed extensions | 2 headers; Notion row "Status → Unread" (Label chip has no unread variant); Notion avatar letter colour (contrast) |
+
+**Slot placement (added 2026-11-08, decided by you)**
+
+Your file has no native Figma slot components. The "slot" is the Material 3 kit placeholder `Shared Building Blocks/Slot-component` inside the mobile screen **Examples/Reviews-Mobile** (`78:4769`), between the "Primary" label (y 116) and the navigation bar (y 816): 412 × 652.
+
+| # | Topic | Decision |
+|---|---|---|
+| 1 | Container | The M3 slot placeholder in Reviews-Mobile, or another screen built the same way (paste its link) |
+| 2 | Placeholder | Hidden, not deleted; the list is inserted in its exact position so the screen layout doesn't move |
+| 3 | Height | Fixed at the slot height (652 px); rows beyond it are clipped below the fold and reported |
+| 4 | Target | Always ask: Reviews-Mobile slot, another screen's slot, or the Section. A list already in the slot is only replaced after asking (the old one is hidden during the build and deleted only after success) |
+
+Slot test ("Monday morning" in Reviews-Mobile): list at y 164 with height 652 = slot; screen height unchanged (884); no other layer moved; placeholder hidden; nothing clipped (content 648 px); all 6 rows linked and read back correctly. On failure the script removes the new list and restores the placeholder and any previous list. **Not yet exercised:** the "replace an existing list in the slot" path (the guard is in place).
+
+**Design issue to consider in Figma (not changed):** the Avatar atom's Letter type pairs a white letter with the violet `color/avatar/default` background (~1.3 : 1). Changing the atom's letter to `color/avatar/on-default` would fix it at the source.
+
+### Phase 6 — Full inbox (completed 2026-11-08, awaiting your review)
+
+**Requirements (decided by you, 2026-11-08)**
+| # | Topic | Decision |
+|---|---|---|
+| 1 | Scope | An `/inbox-screen` Figma skill **and** a coded inbox page in the playground |
+| 2 | Screen parts | Audit and tokenise them first (Phase 1–2 process, no redesign); the search bar becomes a local component |
+| 3 | Compose button | Add an extended "Compose" FAB as a **proposed extension** |
+| 4 | Coded interactions | Row interactions (tap, long press, swipe removes the row, star); scrolling list with fixed bars; selection-mode bar (proposed extension); nav bar switching (Mail / Chat / Meet) |
+| 5 | Screen skill | Duplicate the template screen into a "Generated screens" Section and fill its slot; the template is never changed |
+
+**Order:** 6.1 audit (read-only) → **your approval** → 6.2 tokenise in Figma → 6.3 coded inbox → 6.4 `/inbox-screen` skill.
+
+#### 6.1 Audit of the screen parts (Examples/Reviews-Mobile, read-only, 2026-11-08)
+
+| Part | What it is | Colours today | Type today | Problems |
+|---|---|---|---|---|
+| Screen frame | Local frame, 412 × 884, vertical Auto Layout, radius 28, 8 px device bezel | fill **#FFFFFF hard-coded**; bezel M3 Outline Variant | — | hard-coded fill |
+| Status bar | Remote M3 building block | M3 On Surface | time: Roboto Medium 14, **no text style** | M3 colours; unstyled text inside a remote block (can't restyle the master) |
+| Search bar | **Local frame** wrapping a remote M3 App bar (menu button, "search in mail", account avatar "A") | M3 Surface Container, On Surface, **Primary** (avatar), **On Primary** (letter) | M3 title/large (22/28, not in your scale), M3 title/medium | not a component; M3 colours/styles; 22 px size missing from Typography |
+| "Primary" label | Remote M3 Text button | M3 Secondary | M3 label/large | M3 colour/style |
+| Navigation bar | Remote M3 nav bar, 3 items: Mail (selected, badge "3"), Chat, Meet | bar **#FFFFFF hard**, selected pill **#FFFFFF hard**, Mail icon **#DE3228 hard** (Gmail red), others M3 On Surface Variant, badge M3 Error / On Error | M3 label/small | 3 hard-coded colours; M3 colours |
+| Gesture bar | Remote M3 building block | bar **#FFFFFF hard**, handle M3 On Surface | — | hard-coded fill |
+
+#### 6.1 Proposal
+
+**New primitives** (light values are exactly today's; dark values are M3's own dark values unless noted):
+| Token | Value | Used for |
+|---|---|---|
+| `color/accent/violet/500` | #6750A4 | account avatar (M3 Primary) |
+| `color/accent/violet/200` | #D0BCFF | account avatar, dark |
+| `color/accent/violet/900` | #381E72 | avatar letter, dark |
+| `color/accent/red/500` | #DE3228 | selected Mail icon (Gmail red) |
+| `color/accent/red/900` | #601410 | badge text, dark |
+
+**New semantic tokens** (Light → Dark):
+| Token | Light | Dark | Bound to |
+|---|---|---|---|
+| `color/avatar/account` | violet/500 | violet/200 | account avatar in search bar |
+| `color/avatar/on-account` | neutral/0 | violet/900 | its letter |
+| `color/text/accent` | violet/600 | violet/300 | "Primary" category label |
+| `color/icon/active` | red/500 | red/200 *(proposed)* | selected nav icon |
+| `color/badge/background` | red/700 | red/200 | unread badge |
+| `color/badge/on-background` | neutral/0 | red/900 | badge number |
+
+**Reused tokens:** search bar background → `color/surface/container`; menu icon, status bar icons/time, gesture handle → `color/icon/primary` / `color/text/primary`; search text → `color/text/primary`; unselected nav icons → `color/icon/secondary`; screen, nav bar, selected pill, gesture bar fills → `color/surface/default`; bezel → `color/border/subtle`; search bar side padding → `space/400`.
+
+**Typography:** add `font/size/500` = 22 and `font/line-height/400` = 28; new local text style `title/large` (Roboto Regular 22/28, tracking 0). Search placeholder → `title/large`; account letter → `title/medium`; "Primary" → `label/large`; badge → `label/small`. The status bar time stays unstyled (inside a remote block; reported).
+
+**Components:**
+- **Search bar** → local component `Search bar` on the Atoms board (text properties: Placeholder, Account letter). The screen gets an instance in the same place. Original frame hidden, not deleted.
+- **Compose FAB** (proposed extension) → local component `Compose FAB`: extended FAB 56 px high, radius 16 (`radius/200` ×2 — new `radius/400` = 16), background `color/avatar/default` (light violet, like Gmail), pencil icon + "Compose" (`label/large`, `color/avatar/on-default`), M3 level-3 shadow (effect, not tokenisable). Placed bottom-right above the nav bar (16 px margins), floating over the list.
+
+**Not touched:** M3 remote masters (only overridden on the instances), the device bezel width, nav bar/status bar geometry.
+
+Approved by you on 2026-11-08 (all three: new tokens, typography, both components).
+
+#### 6.2 Tokenise the screen parts (done 2026-11-08)
+- Created: 6 primitives (`violet/200`, `violet/500`, `violet/900`, `red/500`, `red/900`, `radius/400`), 6 semantic + 6 dark tokens, `font/size/500`, `font/line-height/400`, text style `title/large`. Totals: Primitives 55, Semantic 42, Semantic Dark 36, Typography 21, 12 text styles.
+- Rebound every visible colour and text in the status bar, search bar, "Primary" label, nav bar, gesture bar and screen frame to local tokens and styles. **Before/after render fingerprints identical** for every part and the whole screen.
+- **Search bar** is now a local component (Atoms board → "Search bar"); the screen uses an instance; the original frame is kept hidden. Exposed App bar → the placeholder text is editable (`Headline`). Fingerprint identical.
+- **Compose FAB** (proposed extension) created as a local component (Atoms board → "Compose FAB", text property `Label`), placed in the screen 16 px from the right and 16 px above the nav bar.
+- One run hit the 2-minute script limit after most bindings were applied; I checked the state, finished the rest in small steps, and verified everything (no half-applied parts remain).
+- Not changed: the status bar time (unstyled text inside the remote M3 block); 4 **hidden** texts (search supporting text, nav labels) still use M3 `label/medium`; the hidden Slot placeholder keeps its M3 colours; device bezel width; M3 masters.
+
+#### 6.3 Coded inbox (done 2026-11-08) → `npm run dev`, open http://localhost:3000/inbox
+- Tokens re-exported to `tokens/tokens.json` (matches Figma counts) → 154 CSS variables.
+- New components in `components/screen/`: `StatusBar`, `SearchBar`, `CategoryLabel`, `ListHeader`, `NavBar`, `GestureBar`, `ComposeFab`, `SelectionBar` (+ CSS each); new icons (menu, mail, chat, videocam from Figma; edit, close for the proposals).
+- `app/inbox/`: the phone screen (412 × 884, the Figma template), sample data in `lib/inbox-data.ts` (10 fictional emails in 3 groups).
+- Interactions tested in the browser (all pass): list scrolls between fixed bars (1,040 px content in a 652 px slot); tap marks read and the Mail badge counts down (hidden at 0); long press selects and the **selection bar** replaces the search bar (count, clear, archive, delete); swipe left/right removes the row after it snaps; star toggles; Mail / Chat / Meet tabs switch (red active icon; empty states for Chat and Meet; Compose shown on Mail only); light/dark theme; Reset.
+- Proposed extensions in code: selection bar, group headers, Compose button, Chat/Meet empty states.
+- **Fit to screen** (added at your request): the phone scales down with CSS `zoom` to fit the window height (e.g. 68 % in a 720 px window; never below 50 %), with a toggle back to 100 %. Swipe distances are corrected for the zoom, so rows stay under the finger (tested: 45 screen px → 67.4 phone px at 67 %).
+- Types, lint, production build pass (30 static pages).
+
+#### 6.4 `/inbox-screen` skill (done 2026-11-08)
+- `.claude/skills/inbox-screen/`: `SKILL.md` + `create-screen.js`; fills the slot with `../email-list/create-list.js`.
+- Test "Friday afternoon": new screen "Inbox / Friday afternoon" in the new **"Generated screens"** Section, 5 rows in the slot (list at y 164, 652 px), Compose button and bars in place, template unchanged.
+- Found and fixed during the test: (1) the screen hugs its content, so an empty slot briefly shrank it to 232 px; the copy now keeps the placeholder visible until the list goes in (re-tested: stays 884 px, nothing moves); (2) the Mail badge kept the template's "3"; the script now sets it to the list's unread count (hidden at 0).
+
+- [ ] **Your review** of the inbox prototype (`/inbox`) and of "Inbox / Friday afternoon" in Figma
 
 ---
 
@@ -585,5 +706,6 @@ Known gap: selection has **no keyboard equivalent** (long press only, by decisio
 - `plan.md` — this file
 - Phase 3: Next.js files, `tokens/`, `components/`, `lib/`, `data/`, `scripts/`, `public/figma-ref/`, `app/playground/` (see 3.1)
 - Phase 4: `.claude/skills/email-row/` (SKILL.md + reference.md + create-row.js)
-- Phase 5+: `.claude/skills/<skill-name>/` (reusing email-row's reference and script where possible)
+- Phase 5: `.claude/skills/email-list/` (SKILL.md + create-list.js, reusing email-row's reference.md)
+- Phase 6: `components/screen/`, `app/inbox/`, `lib/inbox-data.ts`, `.claude/skills/inbox-screen/` (SKILL.md + create-screen.js)
 - Screenshots and JSON snapshots stay in the session scratchpad, not the repo.

@@ -1,0 +1,51 @@
+.bar {
+  display: flex;
+  flex: none;
+  height: 44px; /* compact M3 nav bar with labels hidden, as in Figma */
+  background: var(--color-surface-default);
+}
+
+/* Each item: padding 6 top / bottom around a 56 × 32 indicator */
+.item {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 0;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: var(--color-icon-secondary);
+  cursor: pointer;
+}
+
+.indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 32px;
+  border-radius: var(--radius-400);
+  background: var(--color-surface-default); /* white "selected pill" in Figma */
+}
+
+.item:hover .indicator {
+  background: var(--color-state-hover-subtle);
+}
+
+.item[data-active="true"] {
+  color: var(--color-icon-active);
+}
+
+/* Unread badge at (28, 2) inside the indicator, 16 px tall */
+.badge {
+  position: absolute;
+  left: 28px;
+  top: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 var(--space-100);
+  border-radius: var(--radius-full);
+  background: var(--color-badge-background);
+  color: var(--color-badge-on-background);
+  text-align: center;
+}

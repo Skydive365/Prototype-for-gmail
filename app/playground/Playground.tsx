@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { EmailRow, type EmailRowProps } from "@/components/EmailRow";
 import { FIGMA_VARIANTS, matchVariant } from "@/lib/figma-variants";
@@ -65,7 +66,8 @@ export function Playground({ sources }: { sources: Record<string, string> }) {
         <div>
           <h1 className={styles.title}>Email row playground</h1>
           <p className={styles.subtitle}>
-            React component built from the Figma tokens · <a href={FIGMA_URL} target="_blank" rel="noreferrer">Open in Figma</a>
+            React component built from the Figma tokens · <a href={FIGMA_URL} target="_blank" rel="noreferrer">Open in Figma</a> ·{" "}
+            <Link href="/inbox">Inbox prototype</Link>
           </p>
         </div>
         <div className={styles.segmented} role="group" aria-label="Theme">

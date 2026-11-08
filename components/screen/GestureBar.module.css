@@ -1,0 +1,15 @@
+.bar {
+  display: flex;
+  justify-content: center;
+  flex: none;
+  height: var(--size-icon-md);
+  padding-top: 10px;
+  background: var(--color-surface-default);
+}
+
+.handle {
+  width: 108px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-icon-primary);
+}

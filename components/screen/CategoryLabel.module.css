@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: var(--size-target-min);
+}
+
+/* M3 text button content: 40 px high, padding 10 / 16 */
+.label {
+  padding: 10px var(--space-400);
+  color: var(--color-text-accent);
+}

@@ -26,7 +26,7 @@ export function useRowGestures({ enabled, swipe, onTap, onLongPress, onSwipe }: 
   const [focused, setFocused] = useState(false);
   const [drag, setDrag] = useState<number | null>(null); // live offset while dragging
 
-  const start = useRef<{ x: number; y: number; offset: number } | null>(null);
+  const start = useRef<{ x: number; y: number; offset: number; zoom: number } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const longPressed = useRef(false);
 
@@ -53,7 +53,9 @@ export function useRowGestures({ enabled, swipe, onTap, onLongPress, onSwipe }: 
       try {
         e.currentTarget.setPointerCapture(e.pointerId);
       } catch {}
-      start.current = { x: e.clientX, y: e.clientY, offset: restingOffset(swipe) };
+      // If the row sits inside a CSS-zoomed area (e.g. the inbox "Fit to screen"), screen pixels ≠ row pixels
+      const zoom = (e.currentTarget as HTMLElement & { currentCSSZoom?: number }).currentCSSZoom ?? 1;
+      start.current = { x: e.clientX, y: e.clientY, offset: restingOffset(swipe), zoom };
       longPressed.current = false;
       setPressed(true);
       clearTimer();
@@ -65,8 +67,8 @@ export function useRowGestures({ enabled, swipe, onTap, onLongPress, onSwipe }: 
     },
     onPointerMove: (e: ReactPointerEvent<HTMLElement>) => {
       if (!start.current) return;
-      const dx = e.clientX - start.current.x;
-      const dy = e.clientY - start.current.y;
+      const dx = (e.clientX - start.current.x) / start.current.zoom;
+      const dy = (e.clientY - start.current.y) / start.current.zoom;
       if (drag === null && Math.abs(dx) < DRAG_START) return;
       if (drag === null && Math.abs(dy) > Math.abs(dx)) return; // vertical movement: let the page scroll
       clearTimer();

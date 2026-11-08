@@ -1,0 +1,35 @@
+.bar {
+  position: relative;
+  flex: none;
+  height: 52px;
+  color: var(--color-icon-primary);
+}
+
+.time {
+  position: absolute;
+  left: var(--space-600);
+  top: 22px;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-plain);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-300);
+  line-height: var(--font-line-height-200);
+}
+
+.cutout {
+  position: absolute;
+  left: calc(50% - 12px);
+  top: 18px;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.icons {
+  position: absolute;
+  right: var(--space-600);
+  top: 25px;
+  width: 46px;
+  height: 17px;
+  fill: currentColor;
+}

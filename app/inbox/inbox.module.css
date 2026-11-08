@@ -1,0 +1,102 @@
+/* Page chrome only. Everything inside .phone uses design tokens. */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  color: #1c1c22;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid #e2e2e8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.segmented button,
+.reset {
+  padding: 6px 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.segmented button + button {
+  border-left: 1px solid #e2e2e8;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: #ececfb;
+  color: #3b3bd6;
+  font-weight: 600;
+}
+
+.reset {
+  border: 1px solid #e2e2e8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.link {
+  color: #3b3bd6;
+}
+
+/* The phone: Figma "Examples/Reviews-Mobile", 412 × 884, radius 28, 8 px bezel */
+.phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 412px;
+  max-width: 100%;
+  height: 884px;
+  overflow: hidden;
+  border-radius: 28px;
+  outline: 8px solid var(--color-border-subtle);
+  background: var(--color-surface-default);
+  user-select: none;
+}
+
+/* The slot: scrolls between the fixed top and bottom bars */
+.list {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: var(--color-surface-default);
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.empty {
+  padding: var(--space-600) var(--space-400);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Compose FAB: 16 px from the right edge and 16 px above the nav bar (44) + gesture bar (24) */
+.fab {
+  position: absolute;
+  right: var(--space-400);
+  bottom: calc(44px + var(--size-icon-md) + var(--space-400));
+}

@@ -89,7 +89,7 @@ The script does this; explain it in the confirmation step.
 | Read on an Unread variant | Sender → `body/large`; Subject → `body/medium` + fill `color/text/secondary`; Time stamp → `Emphasis = Regular` |
 | Selected | Row fill → `color/surface/selected`; Sender, Subject, Snippet, time text → `color/text/on-selected`; star icon → `color/icon/on-selected`; Avatar → `Type = Checked` |
 | Avatar type | Avatar → `Type` |
-| Avatar colour | kit avatar `Background` fill → `color/avatar/green` / `orange` / `default` |
+| Avatar colour | kit avatar `Background` fill → `color/avatar/green` / `orange` / `default`. With `default` (violet), the letter also switches to `color/avatar/on-default`, because the atom's white letter on violet is ~1.3 : 1 contrast (unreadable). Prefer green or orange when drafting. |
 | Snoozed / Scheduled time icon | Time stamp → `Type` |
 
 If step 1 or 2 leaves no variant (e.g. Hovered + Attachment, Swipe + Unread), the row **cannot** be made faithfully: say so in the confirmation and offer the nearest options.

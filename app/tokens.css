@@ -51,6 +51,12 @@
   --color-alpha-neutral-100-10: #E6E0E91A;
   --color-alpha-neutral-200-08: #CAC4D014;
   --color-alpha-neutral-200-10: #CAC4D01A;
+  --radius-400: 16px;
+  --color-accent-violet-200: #D0BCFF;
+  --color-accent-violet-500: #6750A4;
+  --color-accent-violet-900: #381E72;
+  --color-accent-red-500: #DE3228;
+  --color-accent-red-900: #601410;
 }
 
 /* Typography */
@@ -74,6 +80,8 @@
   --font-tracking-normal: 0.25px;
   --font-tracking-relaxed: 0.4px;
   --font-tracking-wide: 0.5px;
+  --font-size-500: 22px;
+  --font-line-height-400: 28px;
 }
 
 /* Semantic, Light (Figma collection: Semantic) */
@@ -115,6 +123,12 @@
   --size-target-min: var(--size-1200);
   --border-width-default: var(--border-width-thin);
   --border-width-focus: var(--border-width-thick);
+  --color-avatar-account: var(--color-accent-violet-500);
+  --color-avatar-on-account: var(--color-neutral-0);
+  --color-text-accent: var(--color-accent-violet-600);
+  --color-icon-active: var(--color-accent-red-500);
+  --color-badge-background: var(--color-accent-red-700);
+  --color-badge-on-background: var(--color-neutral-0);
 }
 
 /* Semantic, Dark (Figma collection: Semantic Dark) */
@@ -149,6 +163,12 @@
   --color-state-pressed: var(--color-alpha-neutral-100-10);
   --color-state-hover-subtle: var(--color-alpha-neutral-200-08);
   --color-state-pressed-subtle: var(--color-alpha-neutral-200-10);
+  --color-avatar-account: var(--color-accent-violet-200);
+  --color-avatar-on-account: var(--color-accent-violet-900);
+  --color-text-accent: var(--color-accent-violet-300);
+  --color-icon-active: var(--color-accent-red-200);
+  --color-badge-background: var(--color-accent-red-200);
+  --color-badge-on-background: var(--color-accent-red-900);
 }
 
 /* Text styles (Figma local text styles) */
@@ -237,5 +257,13 @@
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-700);
   line-height: var(--font-line-height-600);
+  letter-spacing: var(--font-tracking-none);
+}
+
+.text-title-large {
+  font-family: var(--font-family-plain);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-500);
+  line-height: var(--font-line-height-400);
   letter-spacing: var(--font-tracking-none);
 }

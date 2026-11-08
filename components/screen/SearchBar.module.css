@@ -1,0 +1,63 @@
+.outer {
+  flex: none;
+  padding: 0 var(--space-400);
+}
+
+/* M3 App bar: 64 px high, padding 8 / 4, gap 6, space-between */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  height: 64px;
+  padding: var(--space-200) var(--space-100);
+  background: var(--color-surface-container);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--size-target-min);
+  height: var(--size-target-min);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: none;
+  color: var(--color-icon-primary);
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background: var(--color-state-hover-subtle);
+}
+
+.placeholder {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+.trailing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--size-target-min);
+  height: var(--size-target-min);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; /* M3 App bar avatar size */
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-avatar-account);
+  color: var(--color-avatar-on-account);
+}
