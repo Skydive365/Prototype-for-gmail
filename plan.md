@@ -6,7 +6,7 @@ You have a Gmail mobile **Email row** component set and its atoms in Figma (`Lea
 
 Plan approved 2026-11-08. Phase 1 audit completed 2026-11-08 (read-only — nothing in Figma was changed). This file is the single checklist for the project.
 
-**Where we are:** Phases 1–3 complete (2026-11-08). Phase 2 report in **section 2.11**, Phase 3 report in **section 3.1**. Phase 4 (Figma skill) is next; its detailed requirements still need to be defined together.
+**Where we are:** Phases 1–4 complete (2026-11-08). Phase 2 report in **section 2.11**, Phase 3 in **section 3.1**, Phase 4 under its checklist. Phase 5 (multiple rows) is next, after you've tried the `/email-row` skill yourself.
 
 ---
 
@@ -543,9 +543,28 @@ Known gap: selection has **no keyboard equivalent** (long press only, by decisio
 - Dark mode works in code via the theme toggle; in Figma it only exists as the reference collection (Starter plan).
 - The Next.js dev indicator is turned off (`next.config.ts`) so it doesn't cover previews and comparison screenshots.
 
-### Phase 4 — Skill: create one email row in Figma (high level)
-- [ ] `.claude/skills/figma-email-row/SKILL.md`: inputs → instance of master `97:29397` → set variant + text props (+ exposed nested props) → place in a user-approved frame → screenshot validate
-- Detailed requirements defined together later.
+### Phase 4 — Skill: create one email row in Figma (completed 2026-11-08)
+- [x] Requirements agreed (table below)
+- [x] Skill written: `.claude/skills/email-row/` (`SKILL.md`, `reference.md`, `create-row.js`)
+- [x] Test 1, existing combination: Unread + Starred, Figma sender, orange avatar → no overrides, all checks pass
+- [x] Test 2, missing combination: Unread + Attachment + Starred, Dropbox → base Unread + Attachment, override "Star → filled" (proposed extension), all checks pass
+- [x] Tested by you with `/email-row`: worked (2026-11-08)
+
+**Requirements (decided by you)**
+| # | Topic | Decision |
+|---|---|---|
+| 1 | Input | Plain language, e.g. `/email-row unread starred email from Square at 9:41 AM` |
+| 2 | Placement | Section "Generated email rows" on the current page, 200 px right of all content; rows stack with 24 px gap, 40 px padding; never overlap |
+| 3 | Combination not in Figma | Closest variant (Content, Swipe and State must match exactly) + instance overrides (star, unread weights, selected colours, avatar type/colour, time type), reported as a proposed extension. Impossible combos (e.g. Hovered + Attachment) are refused with an explanation |
+| 4 | Missing information | Ask for each gap: sender, subject, snippet, time, avatar look, and content-specific text. Unmentioned states stay at Figma defaults. Then a short confirmation before writing to Figma |
+| 5 | Tool | Figma Console MCP only |
+| 6 | Validation | Read back variant, texts, nested Time/Letter/Starred/avatar Type and text styles; check linked to master, size (412 × 88 / 128), no overlaps; screenshot |
+
+**How it works**
+- `SKILL.md`: the step-by-step workflow Claude follows (connect → understand + ask gaps → confirm → create → validate → report).
+- `reference.md`: the component's properties, the 23 existing variants, the plain-language mapping and the override recipes.
+- `create-row.js`: the script run in Figma. Looks everything up by name (property keys, tokens, text styles), so it survives id changes; removes any partial result on failure; never edits the master or detaches.
+- The skill becomes available as `/email-row` in a **new** Claude Code session in this project (skills load at session start).
 
 ### Phase 5 — Multiple rows (after Phase 4 tested)
 - [ ] Batch input, section headers, Auto Layout list, same master.
@@ -565,5 +584,6 @@ Known gap: selection has **no keyboard equivalent** (long press only, by decisio
 ## 5. Files this project creates (kept minimal)
 - `plan.md` — this file
 - Phase 3: Next.js files, `tokens/`, `components/`, `lib/`, `data/`, `scripts/`, `public/figma-ref/`, `app/playground/` (see 3.1)
-- Phase 4+: `.claude/skills/<skill-name>/SKILL.md` (+ one reference file each)
+- Phase 4: `.claude/skills/email-row/` (SKILL.md + reference.md + create-row.js)
+- Phase 5+: `.claude/skills/<skill-name>/` (reusing email-row's reference and script where possible)
 - Screenshots and JSON snapshots stay in the session scratchpad, not the repo.
